@@ -179,21 +179,21 @@ class SoundCloudClient(object):
         for data in liked['collection']:
         #The Try/Catch makes sure that tracks/playlists which for whatever reason can't be parsed don't stop the entire process. 
 
-        try:
-             track = data['track']
-             if track:
-                 likes.append(self.parse_track(track))
-        except Exception:
-         pass       
+        	try:
+                      track = data['track']
+                      if track:
+                         likes.append(self.parse_track(track))
+        	except Exception:
+         	 pass       
 
-         try:
-              pl = data['playlist']
-              if pl:
-                  likes.append((pl['title'], str(pl['id'])))
-         except Exception:
-          pass      
+		try:
+                      pl = data['playlist']
+                      if pl:
+                         likes.append((pl['title'], str(pl['id'])))
+         	except Exception:
+          	 pass      
 
-        return self.sanitize_tracks(likes)
+        	return self.sanitize_tracks(likes)
 
     # Public
     @cache()
